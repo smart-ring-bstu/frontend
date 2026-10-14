@@ -1,75 +1,131 @@
-# React + TypeScript + Vite
+# Smart Ring — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Фронтенд проекта Smart Ring (учебный проект БГТУ).
 
-Currently, two official plugins are available:
+**Стек:** React, TypeScript, Vite, Node.js 22, Docker (nginx).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+В проекте два способа запуска:
 
-## React Compiler
+- **Локальная разработка**: для повседневной работы, с автообновлением страницы при изменении кода.
+- **Запуск через Docker**: так приложение работает на сервере. Нужен для проверки сборки.
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Локальная разработка (первый запуск)
 
-## Expanding the ESLint configuration
+### Шаг 1. Проверьте, установлен ли Node.js
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+node --version
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Нужна версия **22 или новее**. Если команда вывела `v22.x.x` и выше, переходите к шагу 3.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Шаг 2. Установите Node.js (если не установлен или версия старая)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Любой из способов:
 
+- Скачайте установщик LTS-версии с https://nodejs.org и запустите его.
+- Или на macOS через Homebrew:
+```bash
+  brew install node
 ```
+
+После установки **откройте новый терминал** и снова выполните `node --version`, убедитесь, что версия 22 или новее.
+
+### Шаг 3. Откройте папку проекта в терминале
+
+Склонируйте репозиторий (или откройте уже склонированный) и перейдите в его корневую папку, где лежит файл `package.json`.
+
+### Шаг 4. Установите зависимости
+
+```bash
+npm install
+```
+
+Команда скачает пакеты в папку `node_modules`. Это нужно сделать один раз, а потом повторять только когда изменился `package.json`.
+
+### Шаг 5. Запустите dev-сервер
+
+```bash
+npm run dev
+```
+
+В терминале появится адрес, обычно `http://localhost:5173`.
+
+### Шаг 6. Проверьте результат
+
+Откройте http://localhost:5173 в браузере. Должна появиться стартовая страница Vite с логотипами. Измените что-нибудь в `src/App.tsx` и сохраните файл: страница обновится сама.
+
+### Шаг 7. Остановите сервер
+
+`Ctrl+C` в терминале, где он запущен.
+
+### Дальше в повседневной работе
+
+После первого запуска хватает одной команды `npm run dev`. Дополнительно:
+
+```bash
+npm run build     # production-сборка в папку dist/
+npm run lint      # проверка кода линтером
+```
+ 
+---
+
+## Запуск через Docker (как на сервере)
+
+Так приложение запускается на стенде: код собирается, а готовая статика раздаётся через nginx. Node.js для этого устанавливать не нужно, всё соберётся внутри Docker.
+
+### Шаг 1. Проверьте, установлен ли Docker
+
+```bash
+docker --version
+```
+
+Если команда вывела версию, переходите к шагу 3.
+
+### Шаг 2. Установите Docker (если не установлен)
+
+Скачайте и установите [Docker Desktop](https://www.docker.com/products/docker-desktop/), затем запустите его и дождитесь, пока значок в строке меню покажет, что Docker работает.
+
+### Шаг 3. Проверьте, что Docker запущен
+
+```bash
+docker run --rm hello-world
+```
+
+Должно вывести приветственное сообщение `Hello from Docker!`. Если пишет, что не может подключиться к демону, запустите Docker Desktop.
+
+### Шаг 4. Откройте папку проекта в терминале
+
+Перейдите в корневую папку репозитория, где лежит файл `Dockerfile`.
+
+### Шаг 5. Соберите образ
+
+```bash
+docker build -t frontend:local .
+```
+
+> Первая сборка долгая (несколько минут): скачиваются базовые образы и зависимости npm. Повторные сборки быстрее благодаря кэшу.
+
+В конце не должно быть строк с `ERROR`.
+
+### Шаг 6. Запустите контейнер
+
+```bash
+docker run --rm -p 3000:80 frontend:local
+```
+
+### Шаг 7. Проверьте результат
+
+Откройте http://localhost:3000 в браузере. Должна появиться та же стартовая страница Vite.
+
+### Шаг 8. Остановите контейнер
+
+`Ctrl+C` в терминале, где он запущен.
+ 
+---
+
+## Деплой
+
+Деплой на стенд выполняется автоматически через GitHub Actions (настраивается в репозитории `infra`).
+Подробности появятся после настройки CI/CD.
