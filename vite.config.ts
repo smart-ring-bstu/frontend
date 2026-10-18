@@ -3,5 +3,5 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],122
+  plugins: [react()],
 })
