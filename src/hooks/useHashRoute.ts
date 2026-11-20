@@ -8,11 +8,12 @@ import { useEffect, useState } from 'react'
   Когда команда согласует react-router — заменим этот хук, страницы трогать не придётся.
 */
 
-export type Route = 'login' | 'register' | 'product'
+export type Route = 'login' | 'register' | 'product' | 'about'
 
 function parseHash(hash: string): Route {
   if (hash === '#/register') return 'register'
   if (hash === '#/product') return 'product'
+  if (hash === '#/about') return 'about' 
   return 'login' // пока других страниц нет — всё остальное ведёт на вход
 }
 

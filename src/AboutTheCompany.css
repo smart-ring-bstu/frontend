@@ -1,0 +1,818 @@
+/* Основные настройки */
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('./assets/fonts/Manrope-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('./assets/fonts/Manrope-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('./assets/fonts/Manrope-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('./assets/fonts/Manrope-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('./assets/fonts/Unbounded-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('./assets/fonts/Unbounded-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('./assets/fonts/Unbounded-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Manrope', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.about-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2e4d4;
+  color: #101b50;
+}
+
+.about-container {
+  width: min(100% - 64px, 1120px);
+  margin: 0 auto;
+}
+
+
+/* Шапка */
+
+.about-header {
+  background-color: #9fc4bc;
+  padding: 32px 0 48px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #F1E3D3;
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(30px, 2.2vw, 36px);
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.logo-symbol {
+  width: 19px;
+  height: 19px;
+  border: 2px solid #edb1a5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-symbol span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #f4dfc9;
+}
+
+.navigation-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 1.5vw, 28px);
+}
+
+.navigation-links a {
+  color: rgba(255, 248, 238, 0.85);
+  font-size: 14px;
+  transition: opacity 0.2s ease;
+}
+
+.navigation-links a:hover {
+  opacity: 0.65;
+}
+
+.navigation-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+}
+
+.login-button,
+.cart-button {
+  padding: 9px 17px;
+  border-radius: 30px;
+  font-size: 13px;
+  transition: transform 0.2s ease;
+}
+
+.login-button:hover,
+.cart-button:hover,
+.submit-button:hover {
+  transform: translateY(-2px);
+}
+
+.login-button {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+
+.cart-button {
+  background: linear-gradient(100deg, #df8d9e, #f1c79c);
+  color: #fff;
+}
+
+.header-title {
+  margin-top: 34px;
+}
+
+.header-title h1 {
+  margin: 0;
+  color: #F1E3D3;
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(48px, 4vw, 68px);
+  font-weight: 500;
+  line-height: 1.16;
+}
+
+.header-title p {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: #17265b;
+}
+
+
+/* Основной блок*/
+
+.about-main {
+  flex: 1;
+  padding: 56px 0 44px;
+}
+
+.about-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 4vw, 64px);
+  align-items: start;
+}
+
+.intro-heading h2 {
+  margin: 0;
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(40px, 3.1vw, 50px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.intro-description {
+  max-width: 440px;
+}
+
+.intro-description p {
+  margin: 3px 0 0;
+  color: #566083;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Форма и контакты*/
+
+.about-contacts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin-top: 56px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.form-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid rgba(35, 35, 70, 0.07);
+  outline: none;
+  border-radius: 11px;
+  background-color: #fbf5ef;
+  color: #101b50;
+  font-size: 14px;
+  padding: 14px 17px;
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.form-field input {
+  min-height: 48px;
+}
+
+.form-field textarea {
+  min-height: 125px;
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #a7a3a0;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: #9fc4bc;
+  box-shadow: 0 0 0 3px rgba(159, 196, 188, 0.2);
+}
+
+.submit-button {
+  border: none;
+  border-radius: 30px;
+  padding: 13px 23px;
+  background: linear-gradient(100deg, #dc8b9f, #f1c89d);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.success-message {
+  margin: 0;
+  color: #417a69;
+  font-size: 12px;
+}
+
+.contact-information {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.contact-item h3 {
+  margin: 0 0 5px;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.contact-item p,
+.contact-item a {
+  display: block;
+  margin: 0;
+  color: #26335e;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+/* Карта офиса */
+
+.office-map {
+  margin-top: 52px;
+}
+
+.map-grid {
+  position: relative;
+  width: 100%;
+  height: clamp(230px, 18vw, 300px);
+  overflow: hidden;
+  border-radius: 22px;
+
+  background-color: #e5d5c2;
+
+  background-image:
+    linear-gradient(
+      to right,
+      transparent 0,
+      transparent 18%,
+      #f7ebdc 18%,
+      #f7ebdc 19.5%,
+      transparent 19.5%,
+      transparent 36%,
+      #f7ebdc 36%,
+      #f7ebdc 37.5%,
+      transparent 37.5%,
+      transparent 57%,
+      #f7ebdc 57%,
+      #f7ebdc 58.5%,
+      transparent 58.5%,
+      transparent 72%,
+      #f7ebdc 72%,
+      #f7ebdc 73.5%,
+      transparent 73.5%,
+      transparent 84%,
+      #f7ebdc 84%,
+      #f7ebdc 85.5%,
+      transparent 85.5%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 17%,
+      #f7ebdc 17%,
+      #f7ebdc 20%,
+      transparent 20%,
+      transparent 42%,
+      #f7ebdc 42%,
+      #f7ebdc 45%,
+      transparent 45%,
+      transparent 68%,
+      #f7ebdc 68%,
+      #f7ebdc 71%,
+      transparent 71%
+    );
+}
+
+.map-green-area {
+  position: absolute;
+  width: 28%;
+  height: 44%;
+  left: 54%;
+  top: 28%;
+  border-radius: 18px;
+  background-color: #c6dbc0;
+}
+
+.map-card {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(265px, calc(100% - 32px));
+  padding: 19px;
+  border-radius: 15px;
+  background-color: #99c2b9;
+  box-shadow: 0 8px 25px rgba(43, 65, 70, 0.2);
+}
+
+.map-card h3 {
+  margin: 0 0 7px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.map-card p {
+  margin: 0 0 12px;
+  font-size: 13px;
+}
+
+.map-card a {
+  display: inline-block;
+  padding: 9px 15px;
+  border-radius: 30px;
+  background: linear-gradient(100deg, #df8b9e, #f1c89d);
+  color: #fff;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.map-card a:hover {
+  transform: translateY(-2px);
+}
+
+
+/* Подвал */
+
+.about-footer {
+  padding: 36px 0;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-content p,
+.footer-links a,
+.footer-links span {
+  margin: 0;
+  color: #777e9c;
+  font-size: 12px;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.logo-image {
+  width: clamp(48px, 4vw, 60px);
+  height: clamp(48px, 4vw, 60px);
+  object-fit: cover;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+/* Адаптация под контрольные размеры макета */
+
+/* 1024 px */
+/*@media (max-width: 1100px) {
+  .about-container {
+    width: min(100% - 48px, 1120px);
+  }
+
+  .navigation {
+    gap: 18px;
+  }
+
+  .navigation-links {
+    gap: clamp(12px, 1.6vw, 20px);
+  }
+
+  .navigation-links a {
+    font-size: 13px;
+  }
+
+  .logo {
+    font-size: clamp(27px, 3vw, 32px);
+  }
+
+  .about-intro,
+  .about-contacts {
+    gap: clamp(28px, 4vw, 42px);
+  }
+
+  .intro-heading h2 {
+    font-size: clamp(36px, 4vw, 42px);
+  }
+} */
+
+/* 768 px */
+/*@media (max-width: 850px) {
+  .about-container {
+    width: calc(100% - 48px);
+  }
+
+  .about-header {
+    padding: 26px 0 38px;
+  }
+
+  .navigation {
+    gap: 14px;
+  }
+
+  .navigation-links {
+    display: none;
+  }
+
+  .logo {
+    font-size: clamp(26px, 4vw, 30px);
+  }
+
+  .navigation-actions {
+    gap: 8px;
+  }
+
+  .login-button,
+  .cart-button {
+    padding: 9px 15px;
+    font-size: 12px;
+  }
+
+  .header-title {
+    margin-top: 30px;
+  }
+
+  .header-title h1 {
+    font-size: clamp(44px, 7vw, 56px);
+    line-height: 1.18;
+  }
+
+  .header-title p {
+    font-size: 13px;
+  }
+
+  .about-main {
+    padding: 42px 0 34px;
+  }
+
+  .about-intro,
+  .about-contacts {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .intro-heading h2 {
+    max-width: 650px;
+    font-size: clamp(36px, 5.5vw, 44px);
+    line-height: 1.2;
+  }
+
+  .intro-description {
+    max-width: 680px;
+  }
+
+  .intro-description p {
+    font-size: 15px;
+  }
+
+  .about-contacts {
+    margin-top: 38px;
+    gap: 34px;
+  }
+
+  .contact-form {
+    gap: 18px;
+  }
+
+  .contact-information {
+    gap: 22px;
+  }
+
+  .office-map {
+    margin-top: 38px;
+  }
+
+  .map-grid {
+    height: clamp(220px, 34vw, 270px);
+  }
+
+  .about-footer {
+    padding: 28px 0;
+  }
+} */
+
+/* 390 px */
+/*@media (max-width: 520px) {
+  .about-container {
+    width: calc(100% - 40px);
+  }
+
+  .about-header {
+    padding: 22px 0 34px;
+  }
+
+  .navigation {
+    gap: 10px;
+  }
+
+  .logo {
+    gap: 8px;
+    font-size: clamp(23px, 6.5vw, 27px);
+    line-height: 1.2;
+  }
+
+  .logo-symbol {
+    width: 16px;
+    height: 16px;
+  }
+
+  .logo-symbol span {
+    width: 5px;
+    height: 5px;
+  }
+
+  .navigation-actions {
+    gap: 0;
+  }
+
+  .login-button {
+    display: none;
+  }
+
+  .cart-button {
+    padding: 8px 13px;
+    font-size: 11px;
+  }
+
+  .header-title {
+    margin-top: 34px;
+  }
+
+  .header-title h1 {
+    font-size: clamp(38px, 10vw, 44px);
+    line-height: 1.2;
+  }
+
+  .header-title p {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .about-main {
+    padding: 34px 0 28px;
+  }
+
+  .about-intro {
+    gap: 18px;
+  }
+
+  .intro-heading h2 {
+    font-size: clamp(30px, 8vw, 35px);
+    line-height: 1.22;
+  }
+
+  .intro-description p {
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .about-contacts {
+    margin-top: 32px;
+    gap: 30px;
+  }
+
+  .contact-form {
+    gap: 16px;
+  }
+
+  .form-field {
+    gap: 7px;
+  }
+
+  .form-field label {
+    font-size: 13px;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    border-radius: 10px;
+    padding: 13px 14px;
+    font-size: 14px;
+  }
+
+  .form-field input {
+    min-height: 46px;
+  }
+
+  .form-field textarea {
+    min-height: 112px;
+  }
+
+  .submit-button {
+    padding: 12px 21px;
+    font-size: 13px;
+  }
+
+  .success-message {
+    font-size: 12px;
+  }
+
+  .contact-information {
+    gap: 20px;
+  }
+
+  .contact-item h3 {
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+
+  .contact-item p,
+  .contact-item a {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .office-map {
+    margin-top: 32px;
+  }
+
+  .map-grid {
+    height: 320px;
+    border-radius: 18px;
+  }
+
+  .map-green-area {
+    width: 38%;
+    height: 38%;
+    left: 52%;
+    top: 30%;
+    border-radius: 14px;
+  }
+
+  .map-card {
+    width: min(250px, calc(100% - 28px));
+    padding: 16px;
+    border-radius: 13px;
+  }
+
+  .map-card h3 {
+    font-size: 14px;
+  }
+
+  .map-card p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .map-card a {
+    padding: 9px 14px;
+    font-size: 11px;
+  }
+
+  .about-footer {
+    padding: 24px 0;
+  }
+
+  .footer-content {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .footer-content p,
+  .footer-links a,
+  .footer-links span {
+    font-size: 11px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 5px 8px;
+  }
+
+  .logo-image {
+    width: 46px;
+    height: 46px;
+  }
+}*/
