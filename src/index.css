@@ -1,31 +1,99 @@
+/*
+  Глобальные стили и цветовые токены.
 
+  Два слоя переменных:
+  1) ПАЛИТРА — цвета из Figma (Color styles), названия как в макете.
+     ✓ — HEX снят прямо из Figma, ~ — подобран по скриншоту, уточнить у дизайнеров.
+  2) РОЛИ — «для чего» цвет (фон страницы, текст, ссылка...).
+     В компонентах используем ТОЛЬКО роли. Если дизайнер поменяет цвет —
+     правим одну строку здесь, и весь сайт перекрасится.
+*/
 :root {
-  font-family: 'Manrope', sans-serif;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* ---------- 1. Палитра (Figma) ---------- */
+  --color-shadow-green: #99c1b9; /* Shadow Green ✓ — шапка */
+  --color-parchment: #efe2d3; /* Parchment ~ — фон страницы */
+  --color-linen: #fbf4ec; /* Linen ✓ — карточки, поля ввода */
+  --color-arapawa: #0e1054; /* Arapawa ✓ — основной тёмный текст */
+  --color-comet: #55577d; /* Comet ~ — второстепенный текст */
+  --color-boulder: #77777f; /* Boulder ~ — плейсхолдеры */
+  --color-purple-heart: #7a18da; /* Purple Heart ~ — ссылки */
+  --color-can-can: #d88c99; /* Can Can ✓ — начало градиента кнопок */
+  --color-peach: #f2d0aa; /* ✓ — конец градиента кнопок */
+  --color-white: #ffffff;
+
+  /* Логотип (из брендбука, см. AURING_context.md) */
+  --logo-purple: #7a18da;
+  --logo-blue: #0a78e8;
+
+  /* Нет в макете: состояние ошибки дизайнеры не нарисовали — согласовать */
+  --color-error: #c0392b;
+
+  /* ---------- 2. Роли ---------- */
+  --bg-page: var(--color-parchment);
+  --bg-hero: var(--color-shadow-green);
+  --bg-card: var(--color-linen);
+  --bg-input: var(--color-linen);
+
+  --text-main: var(--color-arapawa);
+  --text-muted: var(--color-comet);
+  --text-placeholder: var(--color-boulder);
+  --text-on-hero: var(--color-parchment);
+  --text-on-accent: var(--color-white);
+  --link: var(--color-purple-heart);
+
+  --border-input: rgb(14 16 84 / 16%); /* Arapawa 16% ✓ */
+  --border-input-focus: rgb(14 16 84 / 45%);
+  --gradient-accent: linear-gradient(90deg, var(--color-can-can), var(--color-peach)); /* ✓ */
+
+  /* ---------- Шрифты и размеры ---------- */
+  --font-heading: 'Unbounded', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+
+  --radius-field: 16px; /* ✓ */
+  --radius-card: 32px;
+  --radius-pill: 999px; /* ✓ */
+
+  --container-width: 1072px; /* на макете 1920 контент начинается с 424px: 1920 − 2·424 */
+  --gutter: 24px;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
-  width: 100%;
-  min-height: 100%;
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
   margin: 0;
 }
 
-body {
-  min-width: 320px;
-  font-family: 'Manrope', sans-serif;
+a {
+  color: var(--link);
 }
 
 button,
-input,
-textarea {
+input {
   font: inherit;
+}
+
+/* Общий контейнер: ограничивает ширину контента и даёт отступы по бокам */
+.container {
+  width: 100%;
+  max-width: calc(var(--container-width) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
 }
