@@ -1,111 +1,99 @@
+/*
+  Глобальные стили и цветовые токены.
+
+  Два слоя переменных:
+  1) ПАЛИТРА — цвета из Figma (Color styles), названия как в макете.
+     ✓ — HEX снят прямо из Figma, ~ — подобран по скриншоту, уточнить у дизайнеров.
+  2) РОЛИ — «для чего» цвет (фон страницы, текст, ссылка...).
+     В компонентах используем ТОЛЬКО роли. Если дизайнер поменяет цвет —
+     правим одну строку здесь, и весь сайт перекрасится.
+*/
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* ---------- 1. Палитра (Figma) ---------- */
+  --color-shadow-green: #99c1b9; /* Shadow Green ✓ — шапка */
+  --color-parchment: #efe2d3; /* Parchment ~ — фон страницы */
+  --color-linen: #fbf4ec; /* Linen ✓ — карточки, поля ввода */
+  --color-arapawa: #0e1054; /* Arapawa ✓ — основной тёмный текст */
+  --color-comet: #55577d; /* Comet ~ — второстепенный текст */
+  --color-boulder: #77777f; /* Boulder ~ — плейсхолдеры */
+  --color-purple-heart: #7a18da; /* Purple Heart ~ — ссылки */
+  --color-can-can: #d88c99; /* Can Can ✓ — начало градиента кнопок */
+  --color-peach: #f2d0aa; /* ✓ — конец градиента кнопок */
+  --color-white: #ffffff;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Логотип (из брендбука, см. AURING_context.md) */
+  --logo-purple: #7a18da;
+  --logo-blue: #0a78e8;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Нет в макете: состояние ошибки дизайнеры не нарисовали — согласовать */
+  --color-error: #c0392b;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* ---------- 2. Роли ---------- */
+  --bg-page: var(--color-parchment);
+  --bg-hero: var(--color-shadow-green);
+  --bg-card: var(--color-linen);
+  --bg-input: var(--color-linen);
+
+  --text-main: var(--color-arapawa);
+  --text-muted: var(--color-comet);
+  --text-placeholder: var(--color-boulder);
+  --text-on-hero: var(--color-parchment);
+  --text-on-accent: var(--color-white);
+  --link: var(--color-purple-heart);
+
+  --border-input: rgb(14 16 84 / 16%); /* Arapawa 16% ✓ */
+  --border-input-focus: rgb(14 16 84 / 45%);
+  --gradient-accent: linear-gradient(90deg, var(--color-can-can), var(--color-peach)); /* ✓ */
+
+  /* ---------- Шрифты и размеры ---------- */
+  --font-heading: 'Unbounded', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+
+  --radius-field: 16px; /* ✓ */
+  --radius-card: 32px;
+  --radius-pill: 999px; /* ✓ */
+
+  --container-width: 1072px; /* на макете 1920 контент начинается с 424px: 1920 − 2·424 */
+  --gutter: 24px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
+h2,
+h3,
 p {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+a {
+  color: var(--link);
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+button,
+input {
+  font: inherit;
+}
+
+/* Общий контейнер: ограничивает ширину контента и даёт отступы по бокам */
+.container {
+  width: 100%;
+  max-width: calc(var(--container-width) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
 }
