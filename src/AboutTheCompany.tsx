@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 import { useState, type FormEvent } from "react";
 import logo from "./assets/logo.jpg";
 import "./AboutTheCompany.css";
@@ -23,27 +23,27 @@ function AboutTheCompany() {
       <header className="about-header">
         <div className="about-container">
           <nav className="navigation">
-            <a href="/" className="logo">
+            <Link to="/" className="logo">
                 <img src={logo} alt="AURING" className="logo-image" />
                 <span>AURING</span>
-            </a>
+            </Link>
 
             <div className="navigation-links">
-              <a href="/catalog">Каталог</a>
-              <a href="/app">Приложение</a>
-              <a href="/blog">Блог</a>
-              <a href="/about" className="active-link">
+              <Link to="/catalog">Каталог</Link>
+              <Link to="/app">Приложение</Link>
+              <Link to="/blog">Блог</Link>
+              <Link to="/about" className="active-link">
                 О компании
-              </a>
+              </Link>
             </div>
 
             <div className="navigation-actions">
-              <a href="/login" className="login-button">
+              <Link to="/login" className="login-button">
                 Войти
-              </a>
-              <a href="/cart" className="cart-button">
+              </Link>
+              <Link to="/cart" className="cart-button">
                 Корзина (1)
-              </a>
+              </Link>
             </div>
           </nav>
 
