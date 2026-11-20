@@ -1,9 +1,10 @@
+
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import AboutTheCompany from "./AboutTheCompany";
-import {Catalog} from "./Catalog";
+
+import { Catalog } from './Catalog';
+import AboutTheCompany from './AboutTheCompany';
 
 function App() {
-  
   return (
     <BrowserRouter>
       <Routes>
@@ -13,7 +14,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-  {/*<AboutTheCompany />*/};
 }
 
 export default App;

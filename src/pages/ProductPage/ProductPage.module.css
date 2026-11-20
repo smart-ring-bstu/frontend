@@ -1,0 +1,168 @@
+/*
+  Две колонки на десктопе (макет 1920): плашка 504px + отступ 60px + информация.
+  minmax(0, 1fr) — колонка может сжиматься и не «распирает» страницу длинным текстом.
+*/
+.product {
+  display: grid;
+  grid-template-columns: minmax(0, 504px) minmax(0, 1fr);
+  gap: 60px;
+  align-items: start;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.price {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.2;
+  color: var(--text-main);
+}
+
+.description {
+  margin-top: 16px;
+  max-width: 480px;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.sizeBlock {
+  margin-top: 24px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* Кнопка размера: светлая «плитка» с мягкой тенью */
+.size {
+  min-width: 58px;
+  height: 46px;
+  padding: 0 12px;
+  border: none;
+  border-radius: var(--radius-field);
+  background: var(--bg-card);
+  box-shadow: 0 2px 6px rgb(14 16 84 / 10%);
+  font-size: 15px;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.size:hover {
+  box-shadow: 0 3px 10px rgb(14 16 84 / 18%);
+}
+
+/* Выбранный размер. В макете состояние не нарисовано — сделали тёмным, уточнить у дизайнера */
+.size[aria-checked='true'] {
+  background: var(--text-main);
+  color: var(--text-on-accent);
+}
+
+.size:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+.sizeGuide {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cart {
+  margin-top: 24px;
+}
+
+.message {
+  min-height: 21px; /* место под сообщение заранее — чтобы таблица не прыгала */
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.error {
+  color: var(--color-error);
+}
+
+/* Таблица характеристик */
+.specs {
+  margin: 8px 0 0;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-input);
+  font-size: 14px;
+}
+
+.spec dt {
+  color: var(--text-main);
+}
+
+.spec dd {
+  margin: 0;
+  text-align: right;
+  color: var(--text-muted);
+}
+
+.status {
+  color: var(--text-muted);
+}
+
+/* Планшет: колонки уже */
+@media (max-width: 1023px) {
+  .product {
+    gap: 32px;
+  }
+}
+
+/* Узкий планшет и телефон: всё в одну колонку, плашка сверху */
+@media (max-width: 899px) {
+  .product {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .product > :first-child {
+    width: 100%;
+    max-width: 504px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 599px) {
+  .price {
+    font-size: 26px;
+  }
+
+  /* 7 размеров должны влезть в одну строку на 390px */
+  .sizes {
+    gap: 6px;
+  }
+
+  .size {
+    min-width: 42px;
+    height: 42px;
+    padding: 0 8px;
+  }
+
+  .spec {
+    font-size: 13px;
+  }
+}
