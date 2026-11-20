@@ -11,6 +11,11 @@
   transition: filter 0.15s;
 }
 
+.auto {
+  width: auto;
+  padding: 0 32px;
+}
+
 .button:hover:not(:disabled) {
   filter: brightness(0.96);
 }

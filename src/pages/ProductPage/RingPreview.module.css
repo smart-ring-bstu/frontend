@@ -1,0 +1,136 @@
+/* Тёмная квадратная плашка (504×504 на макете 1920) */
+.preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1; /* всегда квадрат, на любой ширине */
+  padding: 32px 24px;
+  border-radius: var(--radius-card);
+  background: var(--bg-product-preview);
+  color: var(--text-on-preview);
+}
+
+/*
+  Кольцо — круг с градиентом, а «дырка» — круг поверх него цвета фона.
+  ::after — псевдоэлемент: дополнительный блок, который рисует CSS без лишнего HTML.
+*/
+.ring {
+  position: relative;
+  width: 47%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.ring::after {
+  content: '';
+  position: absolute;
+  inset: 16.5%; /* толщина кольца */
+  border-radius: 50%;
+  background: var(--bg-product-preview);
+  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 8%), inset 0 4px 12px rgb(0 0 0 / 35%);
+}
+
+/* Цвета кольца — градиенты из index.css */
+.brand {
+  background: var(--ring-brand);
+}
+
+.rose {
+  background: var(--ring-rose);
+}
+
+.mint {
+  background: var(--ring-mint);
+}
+
+.sand {
+  background: var(--ring-sand);
+}
+
+.options {
+  display: flex;
+  gap: 16px;
+  margin-top: 13%;
+}
+
+.engravings {
+  margin-top: 20px;
+}
+
+/* Кружок выбора (цвет или гравировка) */
+.swatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  /* обводка через box-shadow не сдвигает соседние кружки */
+  transition: box-shadow 0.15s;
+}
+
+.swatch[aria-checked='true'] {
+  box-shadow: 0 0 0 3px var(--color-linen);
+}
+
+.swatch:focus-visible {
+  outline: 2px solid var(--color-linen);
+  outline-offset: 5px;
+}
+
+.caption {
+  margin-top: 12px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Варианты гравировки */
+.engraving-none {
+  background: var(--color-periwinkle-gray);
+}
+
+.engraving-photo {
+  background: var(--color-silver);
+}
+
+.engraving-custom {
+  background: var(--color-white);
+}
+
+.icon {
+  fill: var(--text-muted);
+}
+
+.iconLens {
+  fill: var(--color-silver);
+}
+
+.customText {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+@media (max-width: 599px) {
+  .preview {
+    padding: 24px 16px;
+  }
+
+  .swatch {
+    width: 30px;
+    height: 30px;
+  }
+
+  .options {
+    gap: 12px;
+  }
+
+  .caption {
+    font-size: 13px;
+  }
+}

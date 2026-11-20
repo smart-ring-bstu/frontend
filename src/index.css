@@ -20,6 +20,9 @@
   --color-can-can: #d88c99; /* Can Can ✓ — начало градиента кнопок */
   --color-peach: #f2d0aa; /* ✓ — конец градиента кнопок */
   --color-white: #ffffff;
+  --color-periwinkle-gray: #a9aac6; /* ~ — кружок «без гравировки» */
+  --color-mint-light: #e0eee9; /* ~ — светлый конец мятного кольца */
+  --color-silver: #d9d9d9; /* ~ — кружок «гравировка по фото» */
 
   /* Логотип (из брендбука, см. AURING_context.md) */
   --logo-purple: #7a18da;
@@ -44,6 +47,14 @@
   --border-input: rgb(14 16 84 / 16%); /* Arapawa 16% ✓ */
   --border-input-focus: rgb(14 16 84 / 45%);
   --gradient-accent: linear-gradient(90deg, var(--color-can-can), var(--color-peach)); /* ✓ */
+
+  /* Карточка товара: тёмная плашка с кольцом и варианты цвета кольца */
+  --bg-product-preview: var(--color-arapawa);
+  --text-on-preview: rgb(255 255 255 / 75%);
+  --ring-brand: linear-gradient(135deg, var(--logo-purple), var(--logo-blue));
+  --ring-rose: linear-gradient(135deg, var(--color-can-can), var(--color-peach));
+  --ring-mint: linear-gradient(135deg, var(--color-shadow-green), var(--color-mint-light));
+  --ring-sand: linear-gradient(135deg, var(--color-peach), var(--color-linen));
 
   /* ---------- Шрифты и размеры ---------- */
   --font-heading: 'Unbounded', system-ui, sans-serif;
