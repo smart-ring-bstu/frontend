@@ -15,6 +15,11 @@ export default defineConfig([
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
     ],
+    rules: {
+      complexity: ['warn', 15],
+      eqeqeq: ['warn', 'always', { null: 'ignore' }],
+      'no-unneeded-ternary': 'warn',
+    },
     languageOptions: {
       globals: globals.browser,
     },
