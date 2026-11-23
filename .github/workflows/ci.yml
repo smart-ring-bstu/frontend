@@ -20,3 +20,6 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Show ESLint review warnings
+        run: node .github/scripts/lint-review.mjs
